@@ -1,0 +1,9 @@
+module.exports = {
+	"service": "",
+	"auth" : {
+        "user": "",
+        "pass": ""
+	},
+	"from": "",
+	"to":""
+}
