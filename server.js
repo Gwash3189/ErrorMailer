@@ -8,6 +8,11 @@ var errorMessages = require("./errorMessages.js");
 var mailer = require("./mailer.js");
 var outFileLocation = args.o || args.out;
 var port = args.p || args.port; 
+if(args.help) {
+	success("EXAMPLE: errorMailer -p PORT -o OUTFILE -l LOGINDETAILS");
+	success("login.js must be formatted as: \n" + JSON.stringify(require("./login.js.template"), null, 4))
+	return 0;
+}
 var loginDetails = tryRequire(args.l || args.login, handleNoDetailsLocation);
 
 

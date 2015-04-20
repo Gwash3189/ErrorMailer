@@ -4,7 +4,8 @@
   "description": "an API end point to send error emails. ",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha tests",
+    "start" : "node server.js --"
   },
   "keywords": [
     "error",
