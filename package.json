@@ -4,8 +4,9 @@
   "description": "an API end point to send error emails. ",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests",
-    "start" : "node server.js --"
+    "test": "mocha tests/**/*.spec.js",
+    "test:watch": "npm run test -- --watch --growl",
+    "coverage": "npm run test -- --require blanket -R html-cov > coverage.html"
   },
   "keywords": [
     "error",
@@ -22,6 +23,16 @@
     "nodemailer": "^1.3.4"
   },
   "devDependencies": {
-    "rewire": "^2.3.1"
+    "blanket": "^1.1.6",
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4",
+    "rewire": "^2.3.1",
+    "sinon": "^1.14.1"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [ "" ],
+      "data-cover-never": [ "node_modules", "tests" ]
+    }
   }
 }

@@ -12,18 +12,24 @@ var mailer = {
 		var mailOptions = {
 			to: loginDetails.to,
 			from: loginDetails.from,
-			subject: "New error from error mailer",
-			text: JSON.stringify(dataToSend, null, 4)
+			subject: mailer.subject,
+			text: mailer.format(dataToSend)
 		};
-		transporter.sendMail(mailOptions, mailer.sendMailHandler);
+		transporter.sendMail(mailOptions, mailer.sendMailHandler(error, success));
 	},
-	sendMailHandler: function(err, info) {
-		if(err){
-			error(err);
-		} else {
-			success(info);
+	sendMailHandler: function(error, success) {
+		return function(err, info){
+			if(err){
+				error(err);
+			} else {
+				success(info);
+			}
 		}
-	}
+	},
+	format: function(text) {
+		return JSON.stringify(text, null, 4);
+	},
+	subject: "New error from error mailer"
 };
 
 module.exports = mailer;
